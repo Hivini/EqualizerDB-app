@@ -28,7 +28,6 @@ export class ConfigComponent implements OnInit {
         for (const row of rows) {
           const chunk = {};
           for (const y in row) {
-            console.log('y ', y);
             chunk[metaData[y].name] = row[y];
           }
           resultProcessed.push(chunk);
@@ -37,9 +36,6 @@ export class ConfigComponent implements OnInit {
         for (const line of metaData) {
           metadataProcessed.push(line.name);
         }
-
-        console.log(resultProcessed);
-        console.log(metadataProcessed);
         this.metadata = metadataProcessed;
         this.data = resultProcessed;
       },
