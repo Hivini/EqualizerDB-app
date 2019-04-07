@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Query } from '../query';
 import {debug} from 'util';
+import {HttpParams} from '@angular/common/http';
 
 @Component({
   selector: 'app-test-component',
@@ -11,12 +12,19 @@ export class TestComponentComponent implements OnInit {
   currentQuery: Query = {
     query: ''
   };
+  httpOptions = {
+    params: new HttpParams()
+      .set('query', 'SELECT * FROM NARUTO')
+  };
   constructor() { }
 
   ngOnInit() {
   }
 
   doQuery(query: string): void {
-    console.log(query);
+    this.httpOptions = {
+      params: new HttpParams()
+        .set('query', query)
+    };
   }
 }
