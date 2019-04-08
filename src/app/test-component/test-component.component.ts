@@ -8,13 +8,13 @@ import {HttpParams} from '@angular/common/http';
   templateUrl: './test-component.component.html',
   styleUrls: ['./test-component.component.css']
 })
-export class TestComponentComponent implements OnInit {
+export class TestComponentComponent implements OnInit {xw
   currentQuery: Query = {
     query: ''
   };
   httpOptions = {
     params: new HttpParams()
-      .set('query', 'SELECT * FROM NARUTO')
+      .set('query', '')
   };
   constructor() { }
 

@@ -1,12 +1,12 @@
 <div *ngIf="data && metadata">
   <table mat-table [dataSource]="data" class="mat-elevation-z8 mat-table">
 
-      <ng-container *ngFor="let meta of metadata">
-        <ng-container matColumnDef="{{meta}}">
-          <th mat-header-cell *matHeaderCellDef> {{meta}} </th>
-          <td mat-cell *matCellDef="let element"> {{element[meta]}} </td>
-        </ng-container>
+    <ng-container *ngFor="let meta of metadata">
+      <ng-container matColumnDef="{{meta}}">
+        <th mat-header-cell *matHeaderCellDef> {{meta}} </th>
+        <td mat-cell *matCellDef="let element"> {{element[meta]}} </td>
       </ng-container>
+    </ng-container>
 
 
     <tr mat-header-row *matHeaderRowDef="metadata"></tr>

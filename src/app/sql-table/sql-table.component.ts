@@ -1,38 +1,34 @@
 import {Component, Input, OnInit} from '@angular/core';
-import { ConfigService } from './config.service';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-
-/*
-const httpOptions = {
-  params: new HttpParams()
-    .set('query', 'SELECT * FROM TESTING')
-};*/
+import {HttpClient, HttpParams} from '@angular/common/http';
+import {Query} from '../query';
 
 @Component({
-  selector: 'app-config',
-  templateUrl: './config.component.html',
-  styleUrls: ['./config.component.css']
+  selector: 'app-sql-table',
+  templateUrl: './sql-table.component.html',
+  styleUrls: ['./sql-table.component.css']
 })
-
-
-export class ConfigComponent implements OnInit {
+export class SqlTableComponent implements OnInit {
   public data;
   public metadata;
+  private httpOptionsInner;
 
+  @Input() set httpOptions(value: {params: HttpParams}) {
+    if (this.query !== undefined) {
+      this.httpOptionsInner = value;
+      this.showTable();
+    }
+  }
+
+  @Input() query: string;
 
   constructor(private http: HttpClient) { }
-  private httpOptionsInner;
-  @Input() set httpOptions(value: {params: HttpParams}) {
-    this.httpOptionsInner = value;
-    this.showConfig();
-  }
 
   ngOnInit(): void {
   }
 
-  showConfig() {
+  showTable() {
     this.http.get('http://localhost:3000/', this.httpOptionsInner).subscribe(
-      data =>  {
+      data => {
         // This has nothing beneficial, but removes an error in the IDE
         const result = JSON.parse(JSON.stringify(data));
         const metaData = result.metaData;
@@ -57,5 +53,4 @@ export class ConfigComponent implements OnInit {
       () => console.log('Finished')
     );
   }
-
 }

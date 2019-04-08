@@ -3,4 +3,4 @@
   <input [(ngModel)]="currentQuery.query" placeholder="Query"/>
   <button (click)="doQuery(currentQuery.query)">Do</button>
 </label>
-<app-config [httpOptions]="httpOptions"></app-config>
+<app-sql-table [query]="currentQuery.query" [httpOptions]="httpOptions"></app-sql-table>
