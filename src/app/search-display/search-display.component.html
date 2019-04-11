@@ -1,0 +1,11 @@
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <label>
+      <input matInput placeholder="SQL Query" [(ngModel)]="currentQuery.query" name="query">
+    </label>
+  </mat-form-field>
+</form>
+<label>
+  <button mat-raised-button color="primary" (click)="doQuery(currentQuery.query)">Do Query</button>
+</label>
+<app-sql-table [query]="query" [httpOptions]="httpOptions"></app-sql-table>

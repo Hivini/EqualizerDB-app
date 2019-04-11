@@ -1,0 +1,27 @@
+.title {
+  text-align: center;
+  background: rgba(0,43,113,0.01);
+}
+.title h1 {
+  padding-top: 30px;
+  font-size: 32px;
+}
+.title p {
+  font-style: italic;
+  padding-bottom: 30px;
+}
+mat-card {
+  margin-left: 40%;
+  margin-top: auto;
+}
+.example-card {
+  max-width: 400px;
+}
+
+.rest img {
+  padding-top: 40px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}

@@ -1,0 +1,17 @@
+<mat-form-field class="padding-sides" >
+  <mat-label>Select a table</mat-label>
+  <mat-select [(value)]="table">
+    <mat-option>None</mat-option>
+    <mat-option value="EMPLOYEE">Employees Table</mat-option>
+    <mat-option value="TEAM">Teams Table</mat-option>
+    <mat-option value="PROJECT">Projects Table</mat-option>
+    <mat-option value="WORKS_ON">Works On Table</mat-option>
+    <mat-option value="INTERFACE">Interface Table</mat-option>
+    <mat-option value="SETTINGS">Settings Table</mat-option>
+  </mat-select>
+</mat-form-field>
+<button class="padding-sides" mat-stroked-button color="primary" (click)="doQuery()">Show Table</button>
+<button class="padding-sides" mat-stroked-button color="primary" (click)="doCustomQuery1()">CUSTOM QUERY 1</button>
+<button class="padding-sides" mat-stroked-button color="primary" (click)="doCustomQuery2()">CUSTOM QUERY 2</button>
+<button class="padding-sides" mat-stroked-button color="primary" (click)="doCustomQuery3()">CUSTOM QUERY 3</button>
+<app-sql-table [query]="query" [httpOptions]="httpOptions"></app-sql-table>

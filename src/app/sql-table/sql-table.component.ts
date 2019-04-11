@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
-import {Query} from '../query';
 
 @Component({
   selector: 'app-sql-table',
@@ -11,15 +10,17 @@ export class SqlTableComponent implements OnInit {
   public data;
   public metadata;
   private httpOptionsInner;
+  @Input() query: string;
 
   @Input() set httpOptions(value: {params: HttpParams}) {
-    if (this.query !== undefined) {
+    if (this.query !== '') {
+      console.log(this.query);
       this.httpOptionsInner = value;
       this.showTable();
     }
   }
 
-  @Input() query: string;
+
 
   constructor(private http: HttpClient) { }
 
@@ -27,8 +28,11 @@ export class SqlTableComponent implements OnInit {
   }
 
   showTable() {
-    this.http.get('http://localhost:3000/', this.httpOptionsInner).subscribe(
+    const url = 'http://localhost:3000' + this.query;
+    console.log('URL --> ' + url);
+    this.http.get(url, this.httpOptionsInner).subscribe(
       data => {
+        console.log(data);
         // This has nothing beneficial, but removes an error in the IDE
         const result = JSON.parse(JSON.stringify(data));
         const metaData = result.metaData;
@@ -38,7 +42,11 @@ export class SqlTableComponent implements OnInit {
         for (const row of rows) {
           const chunk = {};
           for (const y in row) {
-            chunk[metaData[y].name] = row[y];
+            if (metaData[y].name === 'REGISTERVALUE') {
+              chunk[metaData[y].name] = row[y].data[0].toString(16) + row[y].data[1].toString(16);
+            } else {
+              chunk[metaData[y].name] = row[y];
+            }
           }
           resultProcessed.push(chunk);
         }

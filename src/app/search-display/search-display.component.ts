@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Query } from '../query';
-import {debug} from 'util';
+import {Query} from '../query';
 import {HttpParams} from '@angular/common/http';
 
 @Component({
-  selector: 'app-test-component',
-  templateUrl: './test-component.component.html',
-  styleUrls: ['./test-component.component.css']
+  selector: 'app-search-display',
+  templateUrl: './search-display.component.html',
+  styleUrls: ['./search-display.component.css']
 })
-export class TestComponentComponent implements OnInit {xw
+export class SearchDisplayComponent implements OnInit {
   currentQuery: Query = {
     query: ''
   };
@@ -16,9 +15,11 @@ export class TestComponentComponent implements OnInit {xw
     params: new HttpParams()
       .set('query', '')
   };
+  query: string;
   constructor() { }
 
   ngOnInit() {
+    this.query = '/search';
   }
 
   doQuery(query: string): void {

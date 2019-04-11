@@ -1,0 +1,9 @@
+.example-form {
+  margin: auto;
+  width: 50%;
+  padding: 10px;
+}
+
+.example-form-field {
+  width: 40%;
+}

@@ -1,0 +1,60 @@
+<mat-card>
+  <mat-form-field class="example-margin">
+    <mat-label>Table list</mat-label>
+    <mat-select required>
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let table of tables" [value]="table" (click)="updateCurrentTable(table)">
+        {{table.name}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="tableControl.hasError('required')">Please choose a table</mat-error>
+  </mat-form-field>
+  <div *ngIf="currentTable !== undefined">
+    <div *ngIf="currentTable.name != 'None'">
+      <div *ngIf="currentTable.name === 'Employee'">
+
+        <h2 class="example-h2">Choose attributes for table Employee</h2>
+        <section class="example-section">
+          <mat-checkbox class="example-margin" [(ngModel)]="showEmployeeAttr.wwid">WWID</mat-checkbox>
+          <mat-checkbox class="example-margin" [(ngModel)]="showEmployeeAttr.email">Email</mat-checkbox>
+          <mat-checkbox class="example-margin" [(ngModel)]="showEmployeeAttr.fname">First Name</mat-checkbox>
+          <mat-checkbox class="example-margin" [(ngModel)]="showEmployeeAttr.lname">Last Name</mat-checkbox>
+          <mat-checkbox class="example-margin" [(ngModel)]="showEmployeeAttr.startDate">Start Date</mat-checkbox>
+          <mat-checkbox class="example-margin" [(ngModel)]="showEmployeeAttr.eteamid">Team ID</mat-checkbox>
+        </section>
+        <section class="example-section">
+          <button mat-raised-button color="primary" (click)="getUser()">Do Query</button>
+        </section>
+      </div>
+
+      <div *ngIf="currentTable.name === 'Team'">
+        <h2 class="example-h2">Choose attributes for table Team</h2>
+        <section class="example-section">
+          <mat-checkbox class="example-margin" [(ngModel)]="showTeamAttr.teamid">Team ID</mat-checkbox>
+          <mat-checkbox class="example-margin" [(ngModel)]="showTeamAttr.tname">Team Name</mat-checkbox>
+          <mat-checkbox class="example-margin" [(ngModel)]="showTeamAttr.organization">Organization</mat-checkbox>
+          <mat-checkbox class="example-margin" [(ngModel)]="showTeamAttr.tmanager">Manager ID</mat-checkbox>
+        </section>
+        <section class="example-section">
+          <button mat-raised-button color="primary" (click)="getUser()">Do Query</button>
+        </section>
+      </div>
+
+      <div *ngIf="currentTable.name === 'Project'">
+        <h2 class="example-h2">Choose attributes for table Project</h2>
+        <section class="example-section">
+          <mat-checkbox class="example-margin" [(ngModel)]="showProjectAttr.projectid">Project ID</mat-checkbox>
+          <mat-checkbox class="example-margin" [(ngModel)]="showProjectAttr.pname">Project Name</mat-checkbox>
+          <mat-checkbox class="example-margin" [(ngModel)]="showProjectAttr.datecreated">Date Created</mat-checkbox>
+          <mat-checkbox class="example-margin" [(ngModel)]="showProjectAttr.powner">Owner ID</mat-checkbox>
+        </section>
+        <section class="example-section">
+          <button mat-raised-button color="primary" (click)="getUser()">Do Query</button>
+        </section>
+      </div>
+
+      <app-sql-table [query]="currentQuery.query" [httpOptions]="httpOptions"></app-sql-table>
+
+    </div> <!-- If None -->
+  </div> <!-- If undefined -->
+</mat-card>
