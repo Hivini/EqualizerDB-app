@@ -1,22 +1,40 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div class="nav-bar">
-  <nav mat-tab-nav-bar>
-    <a mat-tab-link
-         class="nav-link"
-         *ngFor="let link of routes"
-         [routerLink]="link.path"
-         routerLinkActive #rla="routerLinkActive"
-         [active]="rla.isActive">
-      {{link.label}}
-    </a>
-    <a mat-tab-link
-       class="nav-link"
-       [routerLink]="logoutRoute.path"
-       routerLinkActive #rla="routerLinkActive"
-       [active]="rla.isActive">
-      {{logoutRoute.label}}
-    </a>
-
-  </nav>
+<div *ngIf="checkToken()">
+  <div *ngIf="checkRights() === '1'">
+    <h1>PERMISSIONS LEVEL 1</h1>
+    <button (click)="logout()">LOGOUT</button>
+  </div>
+  <div *ngIf="checkRights() === '2'">
+    <h1>PERMISSIONS LEVEL 2</h1>
+    <button (click)="logout()">LOGOUT</button>
+  </div>
+  <div *ngIf="checkRights() === '3'">
+    <h1>PERMISSIONS LEVEL 3</h1>
+    <button (click)="logout()">LOGOUT</button>
+  </div>
+  <div *ngIf="checkRights() === '4'">
+    <div class="nav-bar">
+      <nav mat-tab-nav-bar>
+        <a mat-tab-link
+           class="nav-link"
+           *ngFor="let link of routes"
+           [routerLink]="link.path"
+           routerLinkActive #rla="routerLinkActive"
+           [active]="rla.isActive">
+          {{link.label}}
+        </a>
+        <a mat-tab-link
+           class="nav-link"
+           (click)="logout()"
+           [routerLink]="logoutRoute.path"
+           routerLinkActive #rla="routerLinkActive"
+           [active]="rla.isActive">
+          {{logoutRoute.label}}
+        </a>
+      </nav>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
 </div>
-<router-outlet></router-outlet>
+<div *ngIf="!checkToken()">
+  <app-authenticate-form></app-authenticate-form>
+</div>

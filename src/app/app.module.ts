@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {
   MatButtonModule,
   MatCardModule, MatCheckboxModule, MatIconModule,
@@ -15,13 +15,15 @@ import {
   MatTabsModule, MatToolbarModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { SqlTableComponent } from './sql-table/sql-table.component';
-import { ReportGeneratorComponent } from './report-generator/report-generator.component';
-import { SearchDisplayComponent } from './search-display/search-display.component';
-import { HomeComponent } from './home/home.component';
+import { SqlTableComponent } from './components/sql-table/sql-table.component';
+import { ReportGeneratorComponent } from './components/report-generator/report-generator.component';
+import { SearchDisplayComponent } from './components/search-display/search-display.component';
+import { HomeComponent } from './components/home/home.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import { DbOverviewComponent } from './db-overview/db-overview.component';
-import { InsertRegistersComponent } from './insert-registers/insert-registers.component';
+import { DbOverviewComponent } from './components/db-overview/db-overview.component';
+import { InsertRegistersComponent } from './components/insert-registers/insert-registers.component';
+import { AuthenticateFormComponent } from './components/authenticate-form/authenticate-form.component';
+import {AuthInterceptorService} from './services/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import { InsertRegistersComponent } from './insert-registers/insert-registers.co
     HomeComponent,
     DbOverviewComponent,
     InsertRegistersComponent,
+    AuthenticateFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,9 +53,10 @@ import { InsertRegistersComponent } from './insert-registers/insert-registers.co
     MatCheckboxModule,
     MatIconModule,
     MatToolbarModule,
-    MatListModule
+    MatListModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true} ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

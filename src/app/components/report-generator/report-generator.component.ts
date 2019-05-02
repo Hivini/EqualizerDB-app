@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
-import {Query} from '../query';
+import {Query} from '../../shared/models/query';
 import {HttpParams} from '@angular/common/http';
 export interface Table {
   name: string;

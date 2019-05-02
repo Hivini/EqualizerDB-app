@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Query} from '../query';
+import {Query} from '../../shared/models/query';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {FormControl, Validators} from '@angular/forms';
 import {Table} from '../report-generator/report-generator.component';

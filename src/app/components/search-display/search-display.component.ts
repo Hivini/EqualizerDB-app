@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Query} from '../query';
+import {Query} from '../../shared/models/query';
 import {HttpParams} from '@angular/common/http';
 
 @Component({

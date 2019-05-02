@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpParams} from '@angular/common/http';
-import {Query} from '../query';
+import {Query} from '../../shared/models/query';
 
 @Component({
   selector: 'app-db-overview',

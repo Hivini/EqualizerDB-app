@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-root',
@@ -15,5 +16,18 @@ export class AppComponent {
     { path: 'insert', label: 'Insert Fields '},
   ];
 
-  logoutRoute = { path: 'logout', label: 'Logout'};
+  logoutRoute = { path: 'home', label: 'Logout'};
+
+  checkToken() {
+    return localStorage.getItem('id_token') != null;
+  }
+
+  checkRights() {
+    return localStorage.getItem('user_rights');
+  }
+
+  logout() {
+    localStorage.clear();
+
+  }
 }
