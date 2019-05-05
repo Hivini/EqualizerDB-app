@@ -91,7 +91,33 @@
         <section class="example-section">
           <button mat-raised-button color="primary" (click)="addField()">Add Field</button>
         </section>
-      </div>
+      </div> <!-- Project input -->
+
+      <div *ngIf="currentTable.name === 'Interface'">
+        <form class="example-form">
+          <mat-form-field class="example-form-field">
+            <label>
+              <input name="iname" matInput type="text" placeholder="Interface Name" [(ngModel)]="interfaceVals.iname">
+            </label><br>
+          </mat-form-field><br>
+
+          <mat-form-field class="example-form-field">
+            <label>
+              <input name="iteam" matInput type="text" placeholder="Team ID" [(ngModel)]="interfaceVals.iteam">
+            </label>
+          </mat-form-field><br>
+
+          <mat-form-field class="example-form-field">
+            <label>
+              <input name="iprojectid" matInput type="text" placeholder="Project ID" [(ngModel)]="interfaceVals.iprojectid">
+            </label>
+          </mat-form-field><br>
+        </form>
+        <section class="example-section">
+          <button mat-raised-button color="primary" (click)="addField()">Add Field</button>
+        </section>
+      </div> <!-- Project input -->
+
     </div> <!-- If None -->
   </div> <!-- If undefined -->
 </mat-card>

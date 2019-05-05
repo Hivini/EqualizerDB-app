@@ -1,46 +1,63 @@
-<form class="example-form">
-  <mat-form-field class="example-full-width">
-    <input type="text"
-           placeholder="Enter team name"
-           aria-label="Number"
-           matInput [formControl]="projectControl" [matAutocomplete]="auto">
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option (click)='selectProject(option.projectId)'
-                  *ngFor="let option of filteredProjectOptions | async" [value]="option.projectName">
-        {{option.projectName}}
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
-  <mat-form-field class="example-full-width">
-    <input type="text"
-           placeholder="Enter interface name"
-           aria-label="Number"
-           matInput [formControl]="interfaceControl" [matAutocomplete]="auto2">
-    <mat-autocomplete #auto2="matAutocomplete">
-      <mat-option (click)='selectInterface(option)'
-                  *ngFor="let option of filteredInterfaceOptions | async" [value]="option">
-        {{option}}
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
+<mat-card>
+  <form class="form">
+    <h2><span class="form-header">Select an interface of a project</span></h2>
+    <mat-form-field class="field">
+      <input type="text"
+             placeholder="Enter project name"
+             aria-label="Number"
+             matInput [formControl]="projectControl" [matAutocomplete]="auto">
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option (click)='selectProject(option.projectId)'
+                    *ngFor="let option of filteredProjectOptions | async" [value]="option.projectName">
+          {{option.projectName}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <mat-form-field class="field">
+      <input type="text"
+             placeholder="Enter interface name"
+             aria-label="Number"
+             matInput [formControl]="interfaceControl" [matAutocomplete]="auto2">
+      <mat-autocomplete #auto2="matAutocomplete">
+        <mat-option (click)='selectInterface(option)'
+                    *ngFor="let option of filteredInterfaceOptions | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
 
-  <mat-form-field class="example-full-width">
-    <input type="text"
-           placeholder="Enter interface name"
-           aria-label="Number"
-           matInput [formControl]="settingsControl" [matAutocomplete]="auto3">
-    <mat-autocomplete #auto3="matAutocomplete">
-      <mat-option (click)='selectSetting(option)'
-                  *ngFor="let option of filteredSettingsOptions | async" [value]="option">
-        {{option}}
-      </mat-option>
-    </mat-autocomplete>
-  </mat-form-field>
-</form>
-<input type="text" placeholder="Input new settings owner" arial-label="Number" [(ngModel)]="newOwnerWwid"/>
-<button mat-raised-button (click)="doUpdateQuery()">Display employees</button>
+    <mat-form-field class="field">
+      <input type="text"
+             placeholder="Enter settings name"
+             aria-label="Number"
+             matInput [formControl]="settingsControl" [matAutocomplete]="auto3">
+      <mat-autocomplete #auto3="matAutocomplete">
+        <mat-option (click)='selectSetting(option)'
+                    *ngFor="let option of filteredSettingsOptions | async" [value]="option">
+          {{option}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </form>
+  <form class="form">
+    <h2><span class="form-header">New settings owner</span></h2>
+    <mat-form-field class="field">
+      <input [ngModelOptions]="{standalone: true}"
+        type="text" placeholder="Input new settings owner" arial-label="Number" matInput [(ngModel)]="this.newOwnerWwid"/>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="doUpdateQuery()">Update owner</button>
+  </form>
+</mat-card>
+
 <br>
-<p>Name: {{ownerName}}</p>
-<p>WWID: {{ownerWwid}}</p>
+<mat-card class="below-card">
+  <div class="current-show">
+    <h2>Current owner</h2>
+    <p><b>Name:</b> {{ownerName}}</p>
+    <p><b>WWID:</b> {{ownerWwid}}</p>
+  </div>
+</mat-card>
+
+
 
 

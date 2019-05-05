@@ -49,7 +49,7 @@ export class AppComponent {
       this.projectOwnerRoutes.push(link);
     }
     this.projectOwnerRoutes.push({ path: 'create', label: 'Create'});
-    this.projectOwnerRoutes.push({ path: 'search', label: 'Search in DB' });
+    this.projectOwnerRoutes.push({ path: 'overview', label: 'DB view' });
 
   }
 

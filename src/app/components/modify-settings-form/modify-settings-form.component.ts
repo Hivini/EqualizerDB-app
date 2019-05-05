@@ -81,7 +81,7 @@ export class ModifySettingsFormComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
       if (result.registerField !== undefined) {
-        const body  = {registerField: result.registerField, registerValue: result.registerValue, sOwner: localStorage.getItem('user_wwid')};
+        const body  = {registerField: result.registerField, registerValue: result.registerValue.substring(2), sOwner: localStorage.getItem('user_wwid')};
         this.http.post('http://localhost:3000/settings/createSetting', body)
           .subscribe(data => {
             console.log(data);

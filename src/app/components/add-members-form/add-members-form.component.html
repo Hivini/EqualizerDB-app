@@ -1,45 +1,45 @@
 <mat-vertical-stepper [linear]="true" #stepper>
   <mat-step [stepControl]="namesFormGroup">
     <form [formGroup]="namesFormGroup">
-      <ng-template matStepLabel>Fill out your name</ng-template>
+      <ng-template matStepLabel><span class="formText">Fill out your name</span></ng-template>
       <mat-form-field>
-        <input matInput placeholder="Last name, First name" formControlName="namesCtrl" required>
+        <input class="half-width" matInput placeholder="Last name, First name" formControlName="namesCtrl" required>
       </mat-form-field>
       <div>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-raised-button class="margin-left" color="primary" matStepperNext>Next</button>
       </div>
     </form>
   </mat-step>
   <mat-step [stepControl]="passFormGroup">
     <form [formGroup]="passFormGroup">
-      <ng-template matStepLabel>Fill out your password</ng-template>
+      <ng-template matStepLabel class="formText"><span class="formText">Fill out your password</span></ng-template>
       <mat-form-field>
         <input type="password" matInput placeholder="Password" formControlName="passCtrl" required>
       </mat-form-field>
       <div>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-raised-button class="margin-left" color="primary" matStepperNext>Next</button>
       </div>
     </form>
   </mat-step>
   <mat-step [stepControl]="emailFormGroup">
     <form [formGroup]="emailFormGroup">
-      <ng-template matStepLabel>Fill out your email</ng-template>
+      <ng-template matStepLabel class="formText"><span class="formText">Fill out your email</span></ng-template>
       <mat-form-field>
         <input matInput placeholder="Email" formControlName="emailCtrl" required>
       </mat-form-field>
       <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
+        <button mat-raised-button class="margin-left" color="primary" matStepperPrevious>Back</button>
+        <button mat-raised-button class="margin-left" color="primary" matStepperNext>Next</button>
       </div>
     </form>
   </mat-step>
   <mat-step>
-    <ng-template matStepLabel>Done</ng-template>
-    You are now done.
+    <ng-template matStepLabel><span class="formText">Done</span></ng-template>
+    <p><b>Press done to register.</b></p>
     <div>
-      <button mat-button matStepperPrevious>Back</button>
-      <button mat-button (click)="done()">Done</button>
-      <button mat-button (click)="stepper.reset()">Reset</button>
+      <button mat-raised-button color="primary" class="margin-left" matStepperPrevious>Back</button>
+      <button mat-raised-button color="primary" class="margin-left" (click)="done()">Done</button>
+      <button mat-raised-button color="warn" class="margin-left" (click)="stepper.reset()">Reset</button>
     </div>
   </mat-step>
 </mat-vertical-stepper>

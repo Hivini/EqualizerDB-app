@@ -33,7 +33,7 @@ export class UpdateSettingOwnerComponent implements OnInit {
   filteredSettingsOptions: Observable<string[]>;
   ownerName = 'Select a setting';
   ownerWwid = 'Select a setting';
-  newOwnerWwid = '';
+  newOwnerWwid: string;
   settingsDict = [];
 
   constructor(private http: HttpClient) { }
@@ -146,6 +146,7 @@ export class UpdateSettingOwnerComponent implements OnInit {
   }
 
   private doUpdateQuery() {
+    console.log(this.newOwnerWwid);
     if ((this.projectValue !== '' && this.projectValue !== null) &&
       (this.interfaceValue !== '' && this.interfaceValue !== null) &&
       (this.settingsValue !== '' && this.settingsValue != null)) {

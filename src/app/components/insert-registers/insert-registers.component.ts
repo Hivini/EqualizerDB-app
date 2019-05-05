@@ -23,6 +23,7 @@ export class InsertRegistersComponent implements OnInit {
     {name: 'Employee', route: '/users'},
     {name: 'Team', route: '/teams'},
     {name: 'Project', route: '/projects'},
+    {name: 'Interface', route: '/interfaces'}
   ];
   currentTable: Table;
   employeeVals = {
@@ -40,6 +41,11 @@ export class InsertRegistersComponent implements OnInit {
   projectVals = {
     pname: '',
     powner: null,
+  };
+  interfaceVals = {
+    iname: '',
+    iteam: null,
+    iprojectid: null,
   };
 
   constructor(private http: HttpClient) { }
@@ -86,6 +92,17 @@ export class InsertRegistersComponent implements OnInit {
           .subscribe(data => console.log(data));
         this.projectVals.pname = '';
         this.projectVals.powner = null;
+        break;
+      case 'Interface':
+        this.httpOptions = {
+          params: new HttpParams()
+            .set('fieldsVal', JSON.stringify(this.interfaceVals))
+        };
+        this.http.post('http://localhost:3000/interfaces/register', JSON.stringify(this.interfaceVals), this.httpOptions)
+          .subscribe(data => console.log(data));
+        this.interfaceVals.iname = '';
+        this.interfaceVals.iteam = null;
+        this.interfaceVals.iprojectid = null;
         break;
       default:
         break;

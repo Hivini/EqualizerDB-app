@@ -1,0 +1,35 @@
+.form {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.field {
+  width: 30%;
+  margin-left: 2%;
+}
+
+.form-header {
+  margin-left: 5%;
+}
+
+button {
+  margin-left: 5%;
+}
+
+.current-show {
+  margin-left: 5%;
+}
+
+.current-show p * {
+  font-size: 22px;
+}
+
+.current-show h2 {
+  font-size: 25px;
+}
+
+.below-card {
+  margin-left: 40%;
+  width: 400px;
+  margin-top: 20px;
+}

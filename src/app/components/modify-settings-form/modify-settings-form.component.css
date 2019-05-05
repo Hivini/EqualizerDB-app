@@ -5,3 +5,22 @@ table {
 .mat-cell {
   font-size: 25px;
 }
+
+.upper-button {
+  margin-left: 4%;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+.lower-button {
+  margin-left: 10px;
+}
+
+.field {
+  margin-left: 20px;
+  width: 30%;
+}
+
+.mat-custom1 {
+  background-color: rgba(158, 161, 255, 0.24);
+}

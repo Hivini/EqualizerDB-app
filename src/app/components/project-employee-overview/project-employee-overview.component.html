@@ -1,7 +1,7 @@
-<form class="example-form">
-  <mat-form-field class="example-full-width">
+<form class="form">
+  <mat-form-field class="half-width">
     <input type="text"
-           placeholder="Enter team name"
+           placeholder="Enter project name"
            aria-label="Number"
            matInput [formControl]="projectControl" [matAutocomplete]="auto">
     <mat-autocomplete #auto="matAutocomplete">
@@ -11,7 +11,7 @@
       </mat-option>
     </mat-autocomplete>
   </mat-form-field>
-  <mat-form-field class="example-full-width">
+  <mat-form-field class="half-width">
     <input type="text"
            placeholder="Enter interface name"
            aria-label="Number"
@@ -24,7 +24,7 @@
     </mat-autocomplete>
   </mat-form-field>
 
-  <button mat-raised-button (click)="doSearchQuery()">Display employees</button>
+  <button mat-raised-button color="primary" (click)="doSearchQuery()">Display employees</button>
 </form>
 
 <app-sql-table [query]="currentQuery.query" [httpOptions]="httpOptions"></app-sql-table>

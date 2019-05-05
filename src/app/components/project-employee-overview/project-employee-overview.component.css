@@ -1,0 +1,16 @@
+.form {
+  min-width: 700px;
+  max-width: 1000px;
+  margin-top: 30px;
+  width: 100%;
+}
+
+.half-width {
+  margin-left: 20px;
+  width: 30%;
+}
+
+button {
+  margin-left: 50px;
+
+}

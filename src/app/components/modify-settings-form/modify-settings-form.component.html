@@ -1,16 +1,14 @@
-<button mat-raised-button (click)="openAddSettingDialog()">Add new setting </button>
+<button class="upper-button" mat-raised-button color="primary" (click)="openAddSettingDialog()">Add new setting </button>
 <div *ngIf="dataSource !== undefined">
   <form [formGroup]="form">
-    <p>Selected register field:</p>
-    <mat-form-field>
-      <input matInput name="registerField" formControlName="registerField">
+    <mat-form-field class="field">
+      <input matInput name="registerField" placeholder="New register field" formControlName="registerField">
     </mat-form-field>
-    <p>Selected register value:</p>
-    <mat-form-field>
-      <input matInput name="registerValue" formControlName="registerValue">
+    <mat-form-field class="field">
+      <input matInput name="registerValue" placeholder="New register value" formControlName="registerValue">
     </mat-form-field>
+    <button name="updateVals" class="lower-button" [color]="'custom1'" mat-raised-button (click)="updateSelected()">Update values</button>
   </form>
-  <button name="updateVals" mat-raised-button (click)="updateSelected()">Update values</button>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
     <!-- Checkbox Column -->
