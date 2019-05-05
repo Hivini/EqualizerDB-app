@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {
   MatButtonModule,
-  MatCardModule, MatCheckboxModule, MatIconModule,
+  MatCardModule, MatCheckboxModule, MatDialogModule, MatIconModule,
   MatInputModule, MatListModule,
   MatSelectModule,
   MatSidenavModule, MatStepperModule,
@@ -29,6 +29,8 @@ import {MatAutocompleteModule} from '@angular/material';
 import { InterfaceValuesOverviewComponent } from './components/interface-values-overview/interface-values-overview.component';
 import { AddMembersFormComponent } from './components/add-members-form/add-members-form.component';
 import { UpdateSettingOwnerComponent } from './components/update-setting-owner/update-setting-owner.component';
+import {AddSettingsDialog, ModifySettingsFormComponent} from './components/modify-settings-form/modify-settings-form.component';
+import { CreateProjectFormComponent } from './components/create-project-form/create-project-form.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,9 @@ import { UpdateSettingOwnerComponent } from './components/update-setting-owner/u
     InterfaceValuesOverviewComponent,
     AddMembersFormComponent,
     UpdateSettingOwnerComponent,
+    ModifySettingsFormComponent,
+    AddSettingsDialog,
+    CreateProjectFormComponent
   ],
   imports: [
     BrowserModule,
@@ -65,9 +70,11 @@ import { UpdateSettingOwnerComponent } from './components/update-setting-owner/u
     MatListModule,
     ReactiveFormsModule,
     MatAutocompleteModule,
-    MatStepperModule
+    MatStepperModule,
+    MatDialogModule,
   ],
   providers: [ { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true} ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AddSettingsDialog]
 })
 export class AppModule { }

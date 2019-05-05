@@ -9,6 +9,8 @@ import {ProjectEmployeeOverviewComponent} from './components/project-employee-ov
 import {InterfaceValuesOverviewComponent} from './components/interface-values-overview/interface-values-overview.component';
 import {AddMembersFormComponent} from './components/add-members-form/add-members-form.component';
 import {UpdateSettingOwnerComponent} from './components/update-setting-owner/update-setting-owner.component';
+import {ModifySettingsFormComponent} from './components/modify-settings-form/modify-settings-form.component';
+import {CreateProjectFormComponent} from './components/create-project-form/create-project-form.component';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'report', component: ReportGeneratorComponent },
@@ -20,6 +22,8 @@ const routes: Routes = [
   { path: 'interfaceValues', component: InterfaceValuesOverviewComponent },
   { path: 'addMembers', component: AddMembersFormComponent },
   { path: 'updateSettings', component: UpdateSettingOwnerComponent },
+  { path: 'modifySettings', component: ModifySettingsFormComponent },
+  { path: 'create', component: InsertRegistersComponent },
 ];
 
 @NgModule({

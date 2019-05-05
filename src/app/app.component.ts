@@ -36,7 +36,7 @@ export class AppComponent {
     for (const link of this.normalEmployeeRoutes) {
       this.equalizerEmployeeRoutes.push(link);
     }
-    this.equalizerEmployeeRoutes.push({ path: 'settings', label: 'Modify values'});
+    this.equalizerEmployeeRoutes.push({ path: 'modifySettings', label: 'Modify my settings values'});
 
     // TODO Maybe add select project
     for (const link of this.equalizerEmployeeRoutes) {
@@ -48,7 +48,7 @@ export class AppComponent {
     for (const link of this.teamManagerRoutes) {
       this.projectOwnerRoutes.push(link);
     }
-    this.projectOwnerRoutes.push({ path: 'createProject', label: 'Create Project'});
+    this.projectOwnerRoutes.push({ path: 'create', label: 'Create'});
     this.projectOwnerRoutes.push({ path: 'search', label: 'Search in DB' });
 
   }

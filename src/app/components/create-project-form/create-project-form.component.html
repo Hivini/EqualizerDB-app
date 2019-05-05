@@ -1,0 +1,97 @@
+<mat-card>
+  <mat-form-field class="example-margin">
+    <mat-label>Table list</mat-label>
+    <mat-select required>
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let table of tables" [value]="table" (click)="updateCurrentTable(table)">
+        {{table.name}}
+      </mat-option>
+    </mat-select>
+    <mat-error *ngIf="tableControl.hasError('required')">Please choose a table</mat-error>
+  </mat-form-field>
+  <div *ngIf="currentTable !== undefined">
+    <div *ngIf="currentTable.name != 'None'">
+      <div *ngIf="currentTable.name === 'Employee'">
+        <form class="example-form">
+          <mat-form-field class="example-form-field">
+            <label>
+              <input name="email" matInput type="email" placeholder="Email" [(ngModel)]="employeeVals.email">
+            </label><br>
+          </mat-form-field><br>
+
+          <mat-form-field class="example-form-field">
+            <label>
+              <input name="password" matInput type="password" placeholder="Password" [(ngModel)]="employeeVals.password">
+            </label>
+          </mat-form-field><br>
+
+          <mat-form-field class="example-form-field">
+            <label>
+              <input name="firstName" matInput type="text" placeholder="First Name" [(ngModel)]="employeeVals.fname">
+            </label>
+          </mat-form-field><br>
+
+          <mat-form-field class="example-form-field">
+            <label>
+              <input name="lastName" matInput type="text" placeholder="Last Name" [(ngModel)]="employeeVals.lname">
+            </label>
+          </mat-form-field><br>
+
+          <mat-form-field class="example-form-field">
+            <label>
+              <input name="eteamid" matInput type="text" placeholder="Team ID" [(ngModel)]="employeeVals.eteamid">
+            </label>
+          </mat-form-field><br>
+
+        </form>
+        <section class="example-section">
+          <button mat-raised-button color="primary" (click)="addField()">Add Field</button>
+        </section>
+      </div> <!-- Employee input -->
+
+      <div *ngIf="currentTable.name === 'Team'">
+        <form class="example-form">
+          <mat-form-field class="example-form-field">
+            <label>
+              <input name="name" matInput type="text" placeholder="Team Name" [(ngModel)]="teamVals.tname">
+            </label><br>
+          </mat-form-field><br>
+
+          <mat-form-field class="example-form-field">
+            <label>
+              <input name="organization" matInput type="text" placeholder="Organization " [(ngModel)]="teamVals.organization">
+            </label>
+          </mat-form-field><br>
+
+          <mat-form-field class="example-form-field">
+            <label>
+              <input name="manager" matInput type="number" placeholder="Manager ID" [(ngModel)]="teamVals.tmanager">
+            </label>
+          </mat-form-field><br>
+        </form>
+        <section class="example-section">
+          <button mat-raised-button color="primary" (click)="addField()">Add Field</button>
+        </section>
+      </div> <!-- Team input -->
+
+      <div *ngIf="currentTable.name === 'Project'">
+        <form class="example-form">
+          <mat-form-field class="example-form-field">
+            <label>
+              <input name="name" matInput type="text" placeholder="Project Name" [(ngModel)]="projectVals.pname">
+            </label><br>
+          </mat-form-field><br>
+
+          <mat-form-field class="example-form-field">
+            <label>
+              <input name="owner" matInput type="text" placeholder="Owner " [(ngModel)]="projectVals.powner">
+            </label>
+          </mat-form-field><br>
+        </form>
+        <section class="example-section">
+          <button mat-raised-button color="primary" (click)="addField()">Add Field</button>
+        </section>
+      </div>
+    </div> <!-- If None -->
+  </div> <!-- If undefined -->
+</mat-card>

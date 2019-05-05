@@ -19,18 +19,6 @@
       </a>
     </nav>
   </div>
-  <div *ngIf="checkRights() === '1'">
-    <h1>PERMISSIONS LEVEL 1</h1>
-  </div>
-  <div *ngIf="checkRights() === '2'">
-    <h1>PERMISSIONS LEVEL 2</h1>
-  </div>
-  <div *ngIf="checkRights() === '3'">
-    <h1>PERMISSIONS LEVEL 3</h1>
-  </div>
-  <div *ngIf="checkRights() === '4'">
-  </div>
-  <button (click)="logout()">LOGOUT</button>
   <router-outlet></router-outlet>
 </div>
 <div *ngIf="!checkToken()">
