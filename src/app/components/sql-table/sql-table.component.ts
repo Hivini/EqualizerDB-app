@@ -30,35 +30,52 @@ export class SqlTableComponent implements OnInit {
   showTable() {
     const url = 'http://localhost:3000' + this.query;
     console.log('URL --> ' + url);
-    this.http.get(url, this.httpOptionsInner).subscribe(
-      data => {
-        console.log(data);
-        // This has nothing beneficial, but removes an error in the IDE
-        const result = JSON.parse(JSON.stringify(data));
-        const metaData = result.metaData;
-        const rows = result.rows;
-        const resultProcessed = [];
-        const metadataProcessed = [];
-        for (const row of rows) {
-          const chunk = {};
-          for (const y in row) {
-            if (metaData[y].name === 'REGISTERVALUE') {
-              chunk[metaData[y].name] = row[y].data[0].toString(16) + row[y].data[1].toString(16);
-            } else {
-              chunk[metaData[y].name] = row[y];
-            }
-          }
-          resultProcessed.push(chunk);
-        }
+    if (this.query === '/users/getUserByInterface' || this.query === '/settings/getSettings') {
+      this.http.post(url, JSON.parse(this.httpOptionsInner.params.updates[0].value)).subscribe(
+        data => {
+          this.processData(data);
+        },
+        err => console.log(err),
+        () => console.log('Finished post')
+      );
+    } else {
+      this.http.get(url, this.httpOptionsInner).subscribe(
+        data => {
+          this.processData(data);
+        },
+        err => console.error(err),
+        () => console.log('Finished')
+      );
+    }
+  }
 
-        for (const line of metaData) {
-          metadataProcessed.push(line.name);
+  private processData(data) {
+    console.log(data);
+    // This has nothing beneficial, but removes an error in the IDE
+    const result = JSON.parse(JSON.stringify(data));
+    const metaData = result.metaData;
+    const rows = result.rows;
+    const resultProcessed = [];
+    const metadataProcessed = [];
+    for (const row of rows) {
+      const chunk = {};
+      for (const y in row) {
+        if (metaData[y].name === 'REGISTERVALUE') {
+          chunk[metaData[y].name] = '0x' + (+row[y].data[0]).toString(16);
+          if (row[y].data.length > 1) {
+            chunk[metaData[y].name] += (+row[y].data[1]).toString(16);
+          }
+        } else {
+          chunk[metaData[y].name] = row[y];
         }
-        this.metadata = metadataProcessed;
-        this.data = resultProcessed;
-      },
-      err => console.error(err),
-      () => console.log('Finished')
-    );
+      }
+      resultProcessed.push(chunk);
+    }
+
+    for (const line of metaData) {
+      metadataProcessed.push(line.name);
+    }
+    this.metadata = metadataProcessed;
+    this.data = resultProcessed;
   }
 }

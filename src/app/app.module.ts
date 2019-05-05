@@ -10,7 +10,7 @@ import {
   MatCardModule, MatCheckboxModule, MatIconModule,
   MatInputModule, MatListModule,
   MatSelectModule,
-  MatSidenavModule,
+  MatSidenavModule, MatStepperModule,
   MatTableModule,
   MatTabsModule, MatToolbarModule
 } from '@angular/material';
@@ -24,6 +24,11 @@ import { DbOverviewComponent } from './components/db-overview/db-overview.compon
 import { InsertRegistersComponent } from './components/insert-registers/insert-registers.component';
 import { AuthenticateFormComponent } from './components/authenticate-form/authenticate-form.component';
 import {AuthInterceptorService} from './services/auth-interceptor.service';
+import { ProjectEmployeeOverviewComponent } from './components/project-employee-overview/project-employee-overview.component';
+import {MatAutocompleteModule} from '@angular/material';
+import { InterfaceValuesOverviewComponent } from './components/interface-values-overview/interface-values-overview.component';
+import { AddMembersFormComponent } from './components/add-members-form/add-members-form.component';
+import { UpdateSettingOwnerComponent } from './components/update-setting-owner/update-setting-owner.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +40,10 @@ import {AuthInterceptorService} from './services/auth-interceptor.service';
     DbOverviewComponent,
     InsertRegistersComponent,
     AuthenticateFormComponent,
+    ProjectEmployeeOverviewComponent,
+    InterfaceValuesOverviewComponent,
+    AddMembersFormComponent,
+    UpdateSettingOwnerComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +63,9 @@ import {AuthInterceptorService} from './services/auth-interceptor.service';
     MatIconModule,
     MatToolbarModule,
     MatListModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatAutocompleteModule,
+    MatStepperModule
   ],
   providers: [ { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true} ],
   bootstrap: [AppComponent]

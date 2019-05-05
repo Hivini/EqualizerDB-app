@@ -1,9 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {AuthService} from '../../services/auth.service';
 import {Token} from '../../shared/models/Token';
-import * as jwt_decode from "jwt-decode";
+import * as jwt_decode from 'jwt-decode';
+import {HttpClient} from '@angular/common/http';
+import Project from '../../shared/models/project';
+import project from '../../shared/models/project';
 
 @Component({
   selector: 'app-authenticate-form',
@@ -13,10 +16,10 @@ import * as jwt_decode from "jwt-decode";
 export class AuthenticateFormComponent implements OnInit {
 
   form: FormGroup;
-
   constructor(private fb: FormBuilder,
               private authService: AuthService,
-              private router: Router) {
+              private router: Router,
+              private http: HttpClient) {
 
     this.form = this.fb.group({
       wwid: ['', Validators.required],
@@ -39,6 +42,7 @@ export class AuthenticateFormComponent implements OnInit {
             localStorage.setItem('user_fname', userInfo.fname);
             localStorage.setItem('user_lname', userInfo.lname);
             localStorage.setItem('user_rights', userInfo.userRights);
+            localStorage.setItem('user_teamid', userInfo.teamid);
           }
         );
     }

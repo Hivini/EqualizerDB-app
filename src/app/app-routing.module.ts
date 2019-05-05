@@ -5,13 +5,21 @@ import {SearchDisplayComponent} from './components/search-display/search-display
 import {HomeComponent} from './components/home/home.component';
 import {DbOverviewComponent} from './components/db-overview/db-overview.component';
 import {InsertRegistersComponent} from './components/insert-registers/insert-registers.component';
+import {ProjectEmployeeOverviewComponent} from './components/project-employee-overview/project-employee-overview.component';
+import {InterfaceValuesOverviewComponent} from './components/interface-values-overview/interface-values-overview.component';
+import {AddMembersFormComponent} from './components/add-members-form/add-members-form.component';
+import {UpdateSettingOwnerComponent} from './components/update-setting-owner/update-setting-owner.component';
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'report', component: ReportGeneratorComponent },
   { path: 'search', component: SearchDisplayComponent },
   { path: 'overview', component: DbOverviewComponent },
   { path: 'insert', component: InsertRegistersComponent },
-  { path: 'logout', component: ReportGeneratorComponent }
+  { path: 'logout', component: ReportGeneratorComponent },
+  { path: 'teamEmployees', component: ProjectEmployeeOverviewComponent },
+  { path: 'interfaceValues', component: InterfaceValuesOverviewComponent },
+  { path: 'addMembers', component: AddMembersFormComponent },
+  { path: 'updateSettings', component: UpdateSettingOwnerComponent },
 ];
 
 @NgModule({
